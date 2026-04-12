@@ -65,19 +65,87 @@
         .premium-card { background: var(--card-bg); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid var(--border-color); border-top: 1px solid var(--card-border); box-shadow: 0 20px 40px var(--card-shadow), 0 1px 3px rgba(0,0,0,0.02); border-radius: 28px; position: relative; overflow: hidden; transition: transform 0.4s cubic-bezier(0.25, 1, 0.3, 1), box-shadow 0.4s; }
         .premium-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px var(--card-shadow), 0 10px 20px rgba(0, 113, 227, 0.05); border-color: rgba(0, 113, 227, 0.3); }
 
-        /* REKLAMALAR */
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); z-index: 999999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+        /* REKLAMALAR VA MODALLAR UMUMIY STILI */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); z-index: 999999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; padding: 20px; }
         .modal-overlay.show { opacity: 1; pointer-events: all; }
-        .modal-content { background: var(--bg-color); width: 90%; max-width: 420px; border-radius: 30px; padding: 40px 30px; position: relative; border: 1px solid var(--border-color); transform: translateY(30px) scale(0.95); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-align: center; box-shadow: 0 30px 60px rgba(0,0,0,0.3); overflow: hidden; }
+        .modal-content { background: var(--bg-color); width: 100%; max-width: 420px; border-radius: 30px; padding: 40px 30px; position: relative; border: 1px solid var(--border-color); transform: translateY(30px) scale(0.95); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-align: center; box-shadow: 0 30px 60px rgba(0,0,0,0.3); overflow: hidden; max-height: 90vh; overflow-y: auto;}
         .modal-overlay.show .modal-content { transform: translateY(0) scale(1); }
         .close-btn { position: absolute; top: 15px; right: 15px; width: 36px; height: 36px; background: var(--glass-btn-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid var(--border-color); color: var(--text-main); font-size: 1.2rem; transition: 0.2s; z-index: 10; }
         .close-btn:hover { background: #ff3b30; border-color: #ff3b30; color: white; }
-        .modal-content h3 { font-size: 1.8rem; margin-bottom: 8px; color: var(--text-main); font-weight: 800; letter-spacing: -0.5px;}
-        .modal-main-text { font-size: 1.15rem; font-weight: 600; color: var(--accent-blue); margin-bottom: 12px; }
-        .modal-small-text { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 25px; padding: 0 5px; }
-        .telegram-link { display: inline-block; padding: 14px 40px; background: var(--text-main); color: var(--bg-color); text-decoration: none; border-radius: 30px; font-weight: 700; font-size: 1.05rem; transition: 0.3s; width: 100%;}
-        .telegram-link:hover { background: var(--accent-blue); color: white; box-shadow: 0 10px 25px rgba(0, 113, 227, 0.4); }
+        
+        .modal-content::-webkit-scrollbar { width: 6px; }
+        .modal-content::-webkit-scrollbar-track { background: transparent; }
+        .modal-content::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
 
+        /* BOSHIDA OCHILADIGAN KICHIK REKLAMA */
+        .modal-content h3 { font-size: 1.8rem; margin-bottom: 8px; color: var(--text-main); font-weight: 800; letter-spacing: -0.5px;}
+        .modal-main-text { font-size: 1.15rem; font-weight: 600; color: var(--accent-blue); margin-bottom: 12px; line-height: 1.4;}
+        .modal-small-text { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 25px; padding: 0 5px; }
+        .telegram-link { display: inline-block; padding: 14px 40px; background: var(--text-main); color: var(--bg-color); text-decoration: none; border-radius: 30px; font-weight: 700; font-size: 1.05rem; transition: 0.3s; width: 100%; border: none; cursor: pointer; font-family: inherit;}
+        .telegram-link:hover { background: var(--accent-blue); color: white; box-shadow: 0 10px 25px rgba(0, 113, 227, 0.4); }
+        
+        .ad-star-icon { color: var(--accent-blue); margin-bottom: 15px; display: flex; justify-content: center; }
+        .ad-star-icon svg { width: 45px; height: 45px; filter: drop-shadow(0 10px 15px rgba(0, 113, 227, 0.3)); }
+
+        /* === YANGI: TELEGRAM SERVIS KATTA MODALI VA ICHKI BO'LIMLAR === */
+        .service-modal-content { max-width: 900px; padding: 50px 40px; text-align: left; }
+        .service-modal-header { text-align: center; margin-bottom: 40px; }
+        .service-modal-header h3 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 900; margin-bottom: 10px; }
+        .service-modal-header p { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+        
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; transition: 0.4s; }
+        .srv-card { 
+            background: var(--glass-btn-bg); border: 1px solid var(--border-color); border-radius: 25px; 
+            padding: 30px 20px; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); 
+            display: flex; flex-direction: column; align-items: center; position: relative; overflow: hidden; cursor: pointer;
+        }
+        .srv-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--accent-gradient); opacity: 0; transition: 0.4s; z-index: -1; }
+        .srv-card:hover { transform: translateY(-8px); border-color: transparent; box-shadow: 0 20px 40px rgba(0, 113, 227, 0.2); }
+        .srv-card:hover::before { opacity: 1; }
+        .srv-card:hover h4, .srv-card:hover p { color: white; }
+        
+        .srv-icon { width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; background: var(--card-bg); border-radius: 20px; margin-bottom: 20px; color: var(--accent-blue); box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.4s;}
+        .srv-card:hover .srv-icon { transform: scale(1.1) rotate(-5deg); }
+        .srv-icon svg { width: 30px; height: 30px; }
+        
+        .srv-card h4 { font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin-bottom: 10px; transition: 0.4s;}
+        .srv-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 25px; flex-grow: 1; line-height: 1.5; transition: 0.4s;}
+        .srv-card-btn { background: var(--text-main); color: var(--bg-color); padding: 10px 25px; border-radius: 30px; font-weight: 800; font-size: 0.95rem; transition: 0.3s; width: 100%; display: inline-block; border: none; pointer-events: none;}
+        .srv-card:hover .srv-card-btn { background: white; color: var(--accent-blue); box-shadow: 0 5px 15px rgba(255,255,255,0.3); }
+
+        /* ICHKI OYNA (PREMIUM VA STARS UCHUN) */
+        .inner-details-view { display: none; opacity: 0; transform: translateY(20px); transition: 0.4s; animation: slideUp 0.4s forwards; }
+        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+        
+        .back-btn { background: none; border: none; color: var(--text-muted); font-size: 1rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 5px; margin-bottom: 20px; transition: 0.2s; }
+        .back-btn:hover { color: var(--accent-blue); }
+        .back-btn svg { width: 16px; height: 16px; }
+
+        .detail-header { text-align: center; margin-bottom: 30px; }
+        .detail-header h3 { font-size: 2rem; font-weight: 900; margin-bottom: 5px; color: var(--accent-blue); }
+        .detail-header p { color: var(--text-muted); font-size: 1rem; }
+
+        /* TAB BO'LIMLARI (Akkaunt orqali / Sovg'a) */
+        .tabs-container { display: flex; background: var(--glass-btn-bg); border-radius: 40px; padding: 5px; margin-bottom: 25px; }
+        .tab-btn { flex: 1; padding: 12px; text-align: center; font-weight: 700; color: var(--text-muted); cursor: pointer; border-radius: 35px; transition: 0.3s; border: none; background: transparent; font-size: 1rem; }
+        .tab-btn.active { background: var(--card-bg); color: var(--text-main); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        /* NARXLAR RO'YXATI */
+        .price-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+        .price-item { display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; border: 1px solid var(--border-color); border-radius: 20px; cursor: pointer; transition: 0.3s; background: var(--card-bg); }
+        .price-item:hover { border-color: var(--accent-blue); transform: translateX(5px); }
+        .price-item.selected { border-color: var(--accent-blue); background: rgba(0, 113, 227, 0.05); box-shadow: 0 5px 15px rgba(0, 113, 227, 0.1); }
+        
+        .price-left { display: flex; flex-direction: column; }
+        .price-duration { font-size: 1.1rem; font-weight: 800; color: var(--text-main); }
+        .price-old { font-size: 0.85rem; color: var(--text-muted); text-decoration: line-through; margin-top: 2px; }
+        .price-right { font-size: 1.2rem; font-weight: 900; color: var(--accent-blue); }
+
+        /* SOTIB OLISH TUGMASI (Yashirin turadi) */
+        .buy-action-btn { background: var(--accent-gradient); color: white; border: none; width: 100%; padding: 18px; border-radius: 30px; font-size: 1.1rem; font-weight: 800; cursor: pointer; box-shadow: 0 15px 30px rgba(0, 113, 227, 0.3); transition: 0.3s; display: none; text-align: center; text-decoration: none;}
+        .buy-action-btn:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0, 113, 227, 0.4); }
+
+        /* CHAPDAGI REKLAMA (Narxi 41,990 ga o'zgardi) */
         .floating-ad { position: fixed; left: 25px; bottom: 30px; background: var(--card-bg); backdrop-filter: blur(25px); border: 1px solid var(--border-color); border-radius: 24px; padding: 16px 45px 16px 16px; display: flex; align-items: center; gap: 16px; z-index: 1000; box-shadow: 0 15px 35px var(--card-shadow); transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1); width: max-content; max-width: 340px; }
         .floating-ad.hidden { transform: translateX(-150%); opacity: 0; pointer-events: none; }
         .close-ad-btn { position: absolute; top: 12px; right: 12px; background: var(--glass-btn-bg); color: var(--text-muted); border: none; width: 26px; height: 26px; border-radius: 50%; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
@@ -103,9 +171,13 @@
         .crypto-change.up { color: #34c759; } 
         .crypto-change.down { color: #ff3b30; }
         .controls { display: flex; align-items: center; gap: 12px; }
-        .music-btn, .theme-toggle { background: var(--glass-btn-bg); border: 1px solid var(--border-color); color: var(--text-main); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: 0.3s; }
-        .music-btn.playing { background: var(--text-main); color: var(--bg-color); border-color: transparent;}
-        .music-btn:hover, .theme-toggle:hover { transform: scale(1.05); background: var(--card-bg); }
+        
+        .nav-service-btn { background: var(--text-main); color: var(--bg-color); padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: 0.95rem; border: none; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .nav-service-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        .nav-service-btn:hover { background: var(--accent-gradient); color: white; transform: scale(1.05); box-shadow: 0 10px 20px rgba(0, 113, 227, 0.3); }
+
+        .theme-toggle { background: var(--glass-btn-bg); border: 1px solid var(--border-color); color: var(--text-main); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transition: transform 0.2s; }
+        .theme-toggle:hover { transform: scale(1.05); background: var(--card-bg); }
 
         /* HERO & TERMINAL */
         .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 20px 40px; position: relative; }
@@ -123,7 +195,7 @@
         .cursor-blink { display: inline-block; width: 12px; height: 1.2rem; background: #4af626; animation: blink 1s step-end infinite; vertical-align: middle; margin-left: 5px;}
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* YAGONA VA MAXSUS BO'LIM NOMLARI (Section Headers) */
+        /* YAGONA VA MAXSUS BO'LIM NOMLARI */
         .section-header-wrapper { display: flex; justify-content: center; margin-bottom: 60px; width: 100%; }
         .custom-section-title {
             display: inline-flex; align-items: center; gap: 15px;
@@ -141,7 +213,7 @@
         .skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
         .skill-pill { padding: 14px 28px; font-size: 1.05rem; font-weight: 700; color: var(--text-main); cursor: default; border-radius: 40px;}
 
-        /* === 1. CHEKSIZ MARQUEE === */
+        /* CHEKSIZ MARQUEE */
         .marquee-section { padding: 80px 0; overflow: hidden; display: flex; flex-direction: column; justify-content: center; min-height: 35vh; background: transparent; position: relative; z-index: 1;}
         .marquee-container { display: flex; white-space: nowrap; width: max-content; }
         .marquee-text { display: flex; align-items: center; padding-right: 50px; font-size: clamp(4rem, 10vw, 12rem); font-weight: 900; text-transform: uppercase; line-height: 1; letter-spacing: -4px;}
@@ -152,7 +224,7 @@
         @keyframes scrollLeftAnim { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes scrollRightAnim { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
 
-        /* === 2. TIMELINE === */
+        /* TIMELINE */
         .timeline-section { position: relative; padding: 120px 5vw; overflow: hidden; z-index: 5;}
         .timeline-wrapper { position: relative; z-index: 2; max-width: 850px; margin: 0 auto; }
         .timeline { position: relative; border-left: 3px solid var(--border-color); padding-left: 50px; margin-left: 15px; }
@@ -171,7 +243,7 @@
         .timeline-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
         .timeline-img-box:hover img { transform: scale(1.05); }
 
-        /* === 3. ICHKI QOBILIYATLAR === */
+        /* ICHKI QOBILIYATLAR */
         .horizontal-section { padding: 120px 0; overflow: hidden; z-index: 5; position: relative;}
         .horizontal-container { display: flex; gap: 40px; padding: 20px 5vw 80px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; perspective: 2000px; align-items: stretch;}
         .horizontal-container::-webkit-scrollbar { display: none; }
@@ -190,7 +262,7 @@
         .tilt-card h3 { font-size: 2.2rem; font-weight: 900; margin-bottom: 20px; transform: translateZ(70px); z-index: 2; line-height: 1.1; letter-spacing: -1px;}
         .tilt-card p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; transform: translateZ(30px); z-index: 2; font-weight: 500; margin-top: auto;}
 
-        /* === 4. TARMOQLAR === */
+        /* TARMOQLAR */
         .socials-section { padding: 120px 5vw; max-width: 1300px; margin: 0 auto; z-index: 5; position: relative;}
         .socials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
         
@@ -206,7 +278,7 @@
         .soc-card h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; z-index: 2; letter-spacing: -0.5px;}
         .soc-card p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; z-index: 2; font-weight: 500; }
 
-        /* === 5. MIJOZLAR FIKRI === */
+        /* MIJOZLAR FIKRI */
         .testimonials-section { padding: 120px 5vw; max-width: 1400px; margin: 0 auto; z-index: 5; position: relative;}
         .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 35px; }
         
@@ -222,70 +294,19 @@
         .client-info h4 { font-size: 1.2rem; font-weight: 800; margin-bottom: 4px; color: var(--text-main); }
         .client-info p { font-size: 0.9rem; color: var(--accent-blue); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* === 6. LOYIHALARIM (Yangi bo'lim, mutlaqo yangi animatsiya bilan) === */
+        /* LOYIHALARIM */
         .projects-showcase-section { padding: 100px 5vw; max-width: 1400px; margin: 0 auto; position: relative; z-index: 5; }
-        
-        .project-card-new {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 35px;
-            padding: 40px;
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            text-decoration: none;
-            color: var(--text-main);
-            box-shadow: 0 15px 35px var(--card-shadow);
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            max-width: 650px;
-            width: 100%;
-            /* Blur & Fade Reveal Animatsiyasi */
-            opacity: 0;
-            transform: translateY(60px) scale(0.95);
-            filter: blur(10px);
-        }
-        
-        .project-card-new.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            filter: blur(0);
-        }
-        
-        .project-card-new:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(0, 113, 227, 0.15);
-            border-color: rgba(0, 113, 227, 0.4);
-            background: linear-gradient(145deg, var(--card-bg), rgba(0, 113, 227, 0.03));
-        }
-
-        .project-icon {
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--glass-btn-bg);
-            border-radius: 22px;
-            color: var(--accent-blue);
-            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            flex-shrink: 0;
-        }
-
-        .project-card-new:hover .project-icon {
-            background: var(--accent-gradient);
-            color: white;
-            /* Ikonkaning 3D aylanib kelishi */
-            transform: rotateY(180deg);
-            box-shadow: 0 15px 30px rgba(0, 113, 227, 0.3);
-        }
-        
+        .project-card-new { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 35px; padding: 40px; display: flex; align-items: center; gap: 25px; text-decoration: none; color: var(--text-main); box-shadow: 0 15px 35px var(--card-shadow); transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); max-width: 650px; width: 100%; opacity: 0; transform: translateY(60px) scale(0.95); filter: blur(10px); }
+        .project-card-new.visible { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        .project-card-new:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 30px 60px rgba(0, 113, 227, 0.15); border-color: rgba(0, 113, 227, 0.4); background: linear-gradient(145deg, var(--card-bg), rgba(0, 113, 227, 0.03)); }
+        .project-icon { width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; background: var(--glass-btn-bg); border-radius: 22px; color: var(--accent-blue); transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1); flex-shrink: 0; }
+        .project-card-new:hover .project-icon { background: var(--accent-gradient); color: white; transform: rotateY(180deg); box-shadow: 0 15px 30px rgba(0, 113, 227, 0.3); }
         .project-icon svg { width: 40px; height: 40px; transition: transform 0.6s; }
-        .project-card-new:hover .project-icon svg { transform: rotateY(-180deg); /* Ikonka teskari bo'lib qolmasligi uchun */ }
-
+        .project-card-new:hover .project-icon svg { transform: rotateY(-180deg); }
         .project-info h3 { font-size: 2rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.5px; }
         .project-info p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; font-weight: 500; }
 
-        /* === BOG'LANISH FOOTER === */
+        /* BOG'LANISH FOOTER */
         .contact { padding: 180px 20px; text-align: center; border-top: 1px solid var(--border-color); position: relative; overflow: hidden; z-index: 5;}
         .contact::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60vw; height: 60vw; background: var(--accent-blue); filter: blur(250px); opacity: 0.15; z-index: -1; border-radius: 50%; pointer-events: none; }
         .contact h2 { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 900; letter-spacing: -2px; margin-bottom: 50px; line-height: 1.1; }
@@ -300,10 +321,6 @@
 </head>
 <body>
 
-    <audio id="bgMusic" loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/02/07/audio_671b7b7a66.mp3" type="audio/mpeg">
-    </audio>
-
     <div class="grid-bg"></div>
     <div class="noise-overlay"></div>
     <div class="ambient-bg">
@@ -313,6 +330,153 @@
     </div>
     <canvas id="particle-canvas"></canvas>
 
+    <div class="modal-overlay" id="serviceModal">
+        <div class="modal-content premium-card service-modal-content" id="serviceMainContainer">
+            <button class="close-btn" id="closeServiceModal">&times;</button>
+            
+            <div id="mainServiceMenu">
+                <div class="service-modal-header">
+                    <h3>Telegram Xizmatlari</h3>
+                    <p>Noyob username, yulduzchalar va premium obunalarni to'g'ridan-to'g'ri xarid qiling.</p>
+                </div>
+                
+                <div class="service-grid">
+                    <div class="srv-card" onclick="openInnerMenu('premiumMenu')">
+                        <div class="srv-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        </div>
+                        <h4>Telegram Premium</h4>
+                        <p>1, 3, 6 va 12 oylik premium obunalar xavfsiz kafolat bilan.</p>
+                        <button class="srv-card-btn">Narxlarni ko'rish</button>
+                    </div>
+                    
+                    <div class="srv-card" onclick="openInnerMenu('starsMenu')">
+                        <div class="srv-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"></path><path d="M3 12h18"></path><path d="M5.3 5.3l13.4 13.4"></path><path d="M18.7 5.3L5.3 18.7"></path></svg>
+                        </div>
+                        <h4>Telegram Stars</h4>
+                        <p>Ilova ichidagi xaridlar va mini-applar uchun yulduzchalar.</p>
+                        <button class="srv-card-btn">Narxlarni ko'rish</button>
+                    </div>
+                    
+                    <a href="https://t.me/the_797" target="_blank" class="srv-card" style="text-decoration: none;">
+                        <div class="srv-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        </div>
+                        <h4>NFT & Username</h4>
+                        <p>Fragment platformasi orqali noyob raqamlar va username'lar.</p>
+                        <span class="srv-card-btn">Bog'lanish</span>
+                    </a>
+                    
+                    <a href="https://t.me/the_797" target="_blank" class="srv-card" style="text-decoration: none;">
+                        <div class="srv-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="22"></line><path d="M19 8c-2 0-3-2-3-4a3 3 0 0 0-6 0c0 2-1 4-3 4"></path></svg>
+                        </div>
+                        <h4>Maxsus Sovg'alar</h4>
+                        <p>Yaqinlaringiz profilini bezab turuvchi Telegram sovg'alari (Gifts).</p>
+                        <span class="srv-card-btn">Bog'lanish</span>
+                    </a>
+                </div>
+            </div>
+
+            <div id="premiumMenu" class="inner-details-view">
+                <button class="back-btn" onclick="backToMain()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    Orqaga
+                </button>
+                
+                <div class="detail-header">
+                    <h3>Premium bilan tanishuv</h3>
+                    <p>O'zingizga qulay ulanish turini tanlang</p>
+                </div>
+
+                <div class="tabs-container">
+                    <button class="tab-btn active" onclick="switchTab('account')">Akkaunt orqali</button>
+                    <button class="tab-btn" onclick="switchTab('gift')">Sovg'a sifatida</button>
+                </div>
+
+                <div id="accountPrices" class="price-list">
+                    <div class="price-item" onclick="selectPrice(this, 'Telegram Premium: 1 Oylik (Akkaunt orqali)')">
+                        <div class="price-left">
+                            <span class="price-duration">1 oylik Premium</span>
+                            <span class="price-old">45 000 so'm</span>
+                        </div>
+                        <div class="price-right">41 990 so'm</div>
+                    </div>
+                    <div class="price-item" onclick="selectPrice(this, 'Telegram Premium: 1 Yillik (Akkaunt orqali)')">
+                        <div class="price-left">
+                            <span class="price-duration">1 yillik Premium</span>
+                            <span class="price-old">350 000 so'm</span>
+                        </div>
+                        <div class="price-right">289 990 so'm</div>
+                    </div>
+                </div>
+
+                <div id="giftPrices" class="price-list" style="display: none;">
+                    <div class="price-item" onclick="selectPrice(this, 'Telegram Premium: 3 Oylik (Sovg\\'a)')">
+                        <div class="price-left">
+                            <span class="price-duration">3 oylik Premium</span>
+                        </div>
+                        <div class="price-right">159 990 so'm</div>
+                    </div>
+                    <div class="price-item" onclick="selectPrice(this, 'Telegram Premium: 6 Oylik (Sovg\\'a)')">
+                        <div class="price-left">
+                            <span class="price-duration">6 oylik Premium</span>
+                        </div>
+                        <div class="price-right">224 990 so'm</div>
+                    </div>
+                    <div class="price-item" onclick="selectPrice(this, 'Telegram Premium: 1 Yillik (Sovg\\'a)')">
+                        <div class="price-left">
+                            <span class="price-duration">1 yillik Premium</span>
+                            <span class="price-old">399 990 so'm</span>
+                        </div>
+                        <div class="price-right">369 990 so'm</div>
+                    </div>
+                </div>
+
+                <a href="https://t.me/the_797" target="_blank" class="buy-action-btn" id="premiumBuyBtn">Sotib Olish</a>
+            </div>
+
+            <div id="starsMenu" class="inner-details-view">
+                <button class="back-btn" onclick="backToMain()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    Orqaga
+                </button>
+                
+                <div class="detail-header">
+                    <h3>Telegram Stars</h3>
+                    <p>Kerakli yulduzchalar miqdorini tanlang</p>
+                </div>
+
+                <div class="price-list">
+                    <div class="price-item" onclick="selectStars(this, 'Telegram Stars: 50 ta')">
+                        <div class="price-left"><span class="price-duration">⭐ 50 Stars</span></div>
+                        <div class="price-right">12 500 so'm</div>
+                    </div>
+                    <div class="price-item" onclick="selectStars(this, 'Telegram Stars: 100 ta')">
+                        <div class="price-left"><span class="price-duration">⭐ 100 Stars</span></div>
+                        <div class="price-right">25 000 so'm</div>
+                    </div>
+                    <div class="price-item" onclick="selectStars(this, 'Telegram Stars: 200 ta')">
+                        <div class="price-left"><span class="price-duration">⭐ 200 Stars</span></div>
+                        <div class="price-right">50 000 so'm</div>
+                    </div>
+                    <div class="price-item" onclick="selectStars(this, 'Telegram Stars: 500 ta')">
+                        <div class="price-left"><span class="price-duration">⭐ 500 Stars</span></div>
+                        <div class="price-right">125 000 so'm</div>
+                    </div>
+                    <div class="price-item" onclick="selectStars(this, 'Telegram Stars: 1000 ta')">
+                        <div class="price-left"><span class="price-duration">⭐ 1000 Stars</span></div>
+                        <div class="price-right">250 000 so'm</div>
+                    </div>
+                </div>
+
+                <a href="https://t.me/the_797" target="_blank" class="buy-action-btn" id="starsBuyBtn">Sotib Olish</a>
+            </div>
+
+        </div>
+    </div>
+
     <div class="floating-ad premium-card" id="floatingAd">
         <button class="close-ad-btn" id="closeFloatingAd" title="Yopish">&times;</button>
         <div class="ad-icon">
@@ -320,18 +484,21 @@
         </div>
         <div class="ad-content" style="z-index: 2;">
             <h4>Telegram Premium</h4>
-            <p>1 oy — 36,990 so'm</p>
-            <a href="https://t.me/the797dvn" target="_blank">Sotib olish →</a>
+            <p>1 oy — 41,990 so'm</p>
+            <a href="https://t.me/the_797" target="_blank">Sotib olish →</a>
         </div>
     </div>
 
     <div class="modal-overlay" id="adModal">
         <div class="modal-content premium-card">
             <button class="close-btn" id="closeAd">&times;</button>
-            <h3>Telegram Premium</h3>
-            <p class="modal-main-text">1 oylik Telegram Premium atigi 36,990 so'm!</p>
-            <p class="modal-small-text">Kechirasiz, reklama saytimiz rivoji uchun kerak. Barcha Telegram xizmatlari va Stars uchun kanalimizga qo'shiling.</p>
-            <a href="https://t.me/the797dvn" target="_blank" class="telegram-link">Servisga o'tish</a>
+            <div class="ad-star-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            <h3>Yangi Telegram Servis!</h3>
+            <p class="modal-main-text">Barcha xizmatlardan to'g'ridan-to'g'ri saytning o'zida foydalaning.</p>
+            <p class="modal-small-text">Siz uchun maxsus: Telegram Premium, Stars, noyob NFT hamda maxsus sovg'alarga (Gifts) ajoyib chegirmalar e'lon qildik. Imkoniyatni qo'ldan boy bermang va xaridlarni oson amalga oshiring!</p>
+            <button class="telegram-link" id="adModalOpenServiceBtn">Servisni ochish</button>
         </div>
     </div>
 
@@ -346,7 +513,10 @@
             </div>
         </div>
         <div class="controls">
-            <button class="music-btn" id="musicBtn" title="Sokin musiqani yoqish">🎵</button>
+            <button class="nav-service-btn" id="openServiceBtn">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                Telegram Servis
+            </button>
             <button class="theme-toggle" onclick="toggleTheme()" id="themeIcon">🌙</button>
         </div>
     </nav>
@@ -568,7 +738,7 @@
                 <p style="z-index: 2;">Telegram tarmog'idagi barcha video editlarim va arxiv ishlarim jamlanmasi.</p>
             </a>
             
-            <a href="https://t.me/the797dvn" target="_blank" class="soc-card premium-card anim-elem">
+            <a href="javascript:void(0)" onclick="document.getElementById('serviceModal').classList.add('show'); backToMain();" class="soc-card premium-card anim-elem">
                 <div class="soc-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                 </div>
@@ -578,7 +748,7 @@
             
             <a href="https://t.me/whois_797" target="_blank" class="soc-card premium-card anim-elem">
                 <div class="soc-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 17 22 12"></polyline></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
                 </div>
                 <h3 style="z-index: 2;">Barcha Loyihalarim</h3>
                 <p style="z-index: 2;">Yaratilgan va ustida ish olib borilayotgan barcha proyektlarimning to'liq portfoliosi.</p>
@@ -611,55 +781,46 @@
                 <p class="test-text">Boshida Telegram botimiz foydalanuvchi ko'payganda qotib qolayotgan edi. Jaloliddin arxitekturani butunlay o'zgartirib, kodni optimizatsiya qildi. Hozir tizim 10,000 kishini bemalol ko'taryapti.</p>
                 <div class="client-info"><h4>Azamat Rustamov</h4><p>E-commerce Loyiha Asoschisi</p></div>
             </div>
-            
             <div class="test-card premium-card anim-elem">
                 <div class="quote-icon">"</div>
                 <p class="test-text">Savdo (Trading) algoritmimizda ba'zi ko'rsatkichlar ishlamayotgan edi. U bozorni o'zi yaxshi tushungani uchun xatoni tez topdi va kodga aniq analitik mantiqni uladi.</p>
                 <div class="client-info"><h4>Jasur Karimov</h4><p>Kripto-fond menejeri</p></div>
             </div>
-            
             <div class="test-card premium-card anim-elem">
                 <div class="quote-icon">"</div>
                 <p class="test-text">Saytimizning Frontend qismi juda og'ir va sekin edi. Jaloliddin JS va CSS bilimlarini ishga solib, dizaynni buzmasdan sayt tezligini 3 barobarga oshirdi.</p>
                 <div class="client-info"><h4>Malika Vahobova</h4><p>Art Studio Boshqaruvchisi</p></div>
             </div>
-            
             <div class="test-card premium-card anim-elem">
                 <div class="quote-icon">"</div>
                 <p class="test-text">Bizga Sun'iy intellekt integratsiyasi kerak edi, lekin AI noto'g'ri javoblar berardi. Jaloliddin promp-injiniring orqali sun'iy intellektni bizning xizmatimizga mukammal o'rgatdi.</p>
                 <div class="client-info"><h4>Sardor Aliyev</h4><p>Tech Startup Asoschisi</p></div>
             </div>
-            
             <div class="test-card premium-card anim-elem">
                 <div class="quote-icon">"</div>
                 <p class="test-text">Ish jarayonimiz qog'ozbozlikdan iborat edi. Avvaliga avtomatlashtirish qiyin kechdi, biroq u bizga maxsus tool (uskuna) yozib berdi. Hozir ishimiz 80% yengillashdi.</p>
                 <div class="client-info"><h4>Kamola Turobova</h4><p>Klinika HR Menejeri</p></div>
             </div>
-            
             <div class="test-card premium-card anim-elem">
                 <div class="quote-icon">"</div>
                 <p class="test-text">Mobililovamizda kontent xunuk ko'rinar edi. Jaloliddin mobil interfeys qoidalarini qo'llab, kontent arxitekturasini noldan terib berdi. Foydalanuvchilarimiz juda mamnun.</p>
                 <div class="client-info"><h4>Bekzod Umarov</h4><p>Media Platforma Dasturchisi</p></div>
             </div>
-            
             <div class="test-card premium-card anim-elem">
                 <div class="quote-icon">"</div>
                 <p class="test-text">Dastlab jamoamiz bilan til topishishi og'irdek tuyuldi, ammo uning 'Soft skills' (muloqot) qobiliyati tufayli loyiha muddatidan oldin va a'lo kayfiyatda tugatildi.</p>
                 <div class="client-info"><h4>Dilshod Normurodov</h4><p>Loyiha Boshqaruvchisi</p></div>
             </div>
-            
             <div class="test-card premium-card anim-elem">
                 <div class="quote-icon">"</div>
                 <p class="test-text">Java va C++ da yozilgan eski dasturimiz juda ko'p xato berardi. U kodlarni bitta-bitta tahlil qilib, tizimni qulashdan saqlab qoldi. Uning mantiqiy fikrlashi hayratlanarli.</p>
                 <div class="client-info"><h4>Jamshid Qodirov</h4><p>IT Markaz Bosh Dasturchisi</p></div>
             </div>
-            
             <div class="test-card premium-card anim-elem">
                 <div class="quote-icon">"</div>
                 <p class="test-text">Digital Product yaratishda biz faqat ko'rinishga e'tibor beribmiz. U loyihaga 'Growth' (o'sish) instrumentlarini qo'shgach, sotuvlarimiz keskin ko'paydi.</p>
                 <div class="client-info"><h4>Farrux Murodov</h4><p>Marketing Bo'limi Boshlig'i</p></div>
             </div>
-            
             <div class="test-card premium-card anim-elem">
                 <div class="quote-icon">"</div>
                 <p class="test-text">Backend ma'lumotlar bazasida yo'qotishlar bo'layotgan edi. U butun tizimni tekshirib, ma'lumotlarni shifrlash va himoya qilish tizimini mukammal o'rnatib berdi.</p>
@@ -677,7 +838,6 @@
             </div>
         </div>
         <div style="display: flex; justify-content: center; margin-top: 40px;">
-            
             <a href="https://eduword-app.web.app" target="_blank" class="project-card-new">
                 <div class="project-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -690,7 +850,6 @@
                     <p>Zamonaviy interfeysga ega interaktiv ta'lim va so'z o'rganish platformasi. Loyihaga o'tish uchun bosing.</p>
                 </div>
             </a>
-            
         </div>
     </section>
 
@@ -743,17 +902,6 @@
         }
         setInterval(fetchCrypto, 5000); fetchCrypto();
 
-        // MUSIQA
-        const musicBtn = document.getElementById('musicBtn');
-        const bgMusic = document.getElementById('bgMusic');
-        let isPlaying = false;
-        bgMusic.volume = 0.3; 
-        musicBtn.addEventListener('click', () => {
-            if (isPlaying) { bgMusic.pause(); musicBtn.classList.remove('playing'); } 
-            else { bgMusic.play().catch(e => console.log("Audio block", e)); musicBtn.classList.add('playing'); }
-            isPlaying = !isPlaying;
-        });
-
         // MAGNIT TUGMA
         const magWrapper = document.querySelector('.magnetic-btn-wrapper');
         const magBtn = document.getElementById('magBtn');
@@ -786,12 +934,101 @@
             });
         });
 
-        // REKLAMA YOPISH
+        // ==========================================
+        // TELEGRAM SERVIS MODAL LOGIKASI (YANGILANGAN)
+        // ==========================================
         const adModal = document.getElementById('adModal');
         const floatingAd = document.getElementById('floatingAd');
+        const serviceModal = document.getElementById('serviceModal');
+        
+        const mainServiceMenu = document.getElementById('mainServiceMenu');
+        const premiumMenu = document.getElementById('premiumMenu');
+        const starsMenu = document.getElementById('starsMenu');
+        
+        const premiumBuyBtn = document.getElementById('premiumBuyBtn');
+        const starsBuyBtn = document.getElementById('starsBuyBtn');
+
+        // Boshlang'ich reklamalarni yopish
         window.addEventListener('load', () => { setTimeout(() => adModal.classList.add('show'), 800); });
         document.getElementById('closeAd').addEventListener('click', () => adModal.classList.remove('show'));
         document.getElementById('closeFloatingAd').addEventListener('click', () => floatingAd.classList.add('hidden'));
+        
+        // Yangi: Reklama oynasidagi tugma orqali servis oynasini ochish
+        document.getElementById('adModalOpenServiceBtn').addEventListener('click', () => {
+            adModal.classList.remove('show');
+            serviceModal.classList.add('show');
+            backToMain();
+        });
+        
+        // Servis modalini ochish va yopish (Tepedagi navigatsiyadan)
+        document.getElementById('openServiceBtn').addEventListener('click', () => {
+            serviceModal.classList.add('show');
+            backToMain(); // Har safar ochilganda asosiy menyu ko'rinsin
+        });
+        document.getElementById('closeServiceModal').addEventListener('click', () => serviceModal.classList.remove('show'));
+        serviceModal.addEventListener('click', (e) => {
+            if(e.target === serviceModal) serviceModal.classList.remove('show');
+        });
+
+        // Ichki menyularni ochish
+        function openInnerMenu(menuId) {
+            mainServiceMenu.style.display = 'none';
+            premiumMenu.style.display = 'none';
+            starsMenu.style.display = 'none';
+            
+            document.getElementById(menuId).style.display = 'block';
+            
+            // Tanlovlarni tozalash
+            document.querySelectorAll('.price-item').forEach(el => el.classList.remove('selected'));
+            premiumBuyBtn.style.display = 'none';
+            starsBuyBtn.style.display = 'none';
+        }
+
+        // Asosiy menyuga qaytish
+        function backToMain() {
+            premiumMenu.style.display = 'none';
+            starsMenu.style.display = 'none';
+            mainServiceMenu.style.display = 'block';
+        }
+
+        // Premium: Akkaunt / Sovg'a tablarini o'zgartirish
+        function switchTab(type) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('accountPrices').style.display = 'none';
+            document.getElementById('giftPrices').style.display = 'none';
+            
+            if(type === 'account') {
+                document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+                document.getElementById('accountPrices').style.display = 'flex';
+            } else {
+                document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+                document.getElementById('giftPrices').style.display = 'flex';
+            }
+            
+            // Tab o'zgarganda tanlovni bekor qilish
+            document.querySelectorAll('#premiumMenu .price-item').forEach(el => el.classList.remove('selected'));
+            premiumBuyBtn.style.display = 'none';
+        }
+
+        // Premium narxni tanlash
+        function selectPrice(element, planName) {
+            document.querySelectorAll('#premiumMenu .price-item').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            
+            premiumBuyBtn.style.display = 'block';
+            let message = encodeURIComponent(`Salom! Men ${planName} sotib olmoqchiman.`);
+            premiumBuyBtn.href = `https://t.me/the_797?text=${message}`;
+        }
+
+        // Stars narxni tanlash
+        function selectStars(element, planName) {
+            document.querySelectorAll('#starsMenu .price-item').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            
+            starsBuyBtn.style.display = 'block';
+            let message = encodeURIComponent(`Salom! Men ${planName} sotib olmoqchiman.`);
+            starsBuyBtn.href = `https://t.me/the_797?text=${message}`;
+        }
 
         // TERMINAL YOZISH
         let typeTimeout, hasTyped = false;
@@ -827,19 +1064,16 @@
             const sh = h.scrollHeight || document.body.scrollHeight;
             document.getElementById('progressBar').style.width = (st / (sh - h.clientHeight) * 100) + "%";
             
-            // Asosiy tepaga ko'tarilish effekti
             document.querySelectorAll('.fade-up').forEach(el => {
                 if(el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('visible');
             });
 
-            // Tarmoqlar va Mijozlar fikri bo'limi uchun eski animatsiya (.anim-elem)
             document.querySelectorAll('.anim-elem').forEach((el, index) => {
                 if(el.getBoundingClientRect().top < window.innerHeight - 80) {
                     setTimeout(() => { el.classList.add('visible'); }, index % 4 * 100);
                 }
             });
             
-            // YANGI Loyihalarim bo'limi uchun Blur-Reveal animatsiya (.project-card-new)
             document.querySelectorAll('.project-card-new').forEach((el) => {
                 if(el.getBoundingClientRect().top < window.innerHeight - 80) {
                     el.classList.add('visible');
