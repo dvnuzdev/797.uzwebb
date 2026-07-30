@@ -278,6 +278,69 @@
         .soc-card h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; z-index: 2; letter-spacing: -0.5px;}
         .soc-card p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; z-index: 2; font-weight: 500; }
 
+        /* KATTA LOYIHALAR */
+        .big-projects-section { padding: 120px 5vw; max-width: 1400px; margin: 0 auto; position: relative; z-index: 5; }
+        .projects-mega-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 32px; }
+        @media (max-width: 900px) { .projects-mega-grid { grid-template-columns: 1fr; } }
+        
+        .proj-mega-card {
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 32px;
+            padding: 42px 40px; text-decoration: none; color: var(--text-main);
+            display: flex; flex-direction: column; gap: 22px;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            opacity: 0; transform: translateY(50px) scale(0.97);
+            position: relative; overflow: hidden;
+        }
+        .proj-mega-card.visible { opacity: 1; transform: translateY(0) scale(1); }
+        .proj-mega-card::before { content: ''; position: absolute; inset: 0; background: var(--accent-gradient); opacity: 0; transition: opacity 0.5s; z-index: 0; }
+        .proj-mega-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 40px 80px rgba(0,113,227,0.2); border-color: rgba(0,113,227,0.5); }
+        .proj-mega-card:hover::before { opacity: 0.04; }
+        .proj-mega-card > * { position: relative; z-index: 1; }
+        
+        .proj-mega-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+        .proj-mega-icon { width: 72px; height: 72px; background: var(--glass-btn-bg); border-radius: 22px; display: flex; align-items: center; justify-content: center; color: var(--accent-blue); flex-shrink: 0; transition: 0.5s cubic-bezier(0.23,1,0.32,1); border: 1px solid var(--border-color); }
+        .proj-mega-icon svg { width: 36px; height: 36px; stroke-width: 1.8; }
+        .proj-mega-card:hover .proj-mega-icon { background: var(--accent-gradient); color: white; border-color: transparent; transform: rotate(-8deg) scale(1.1); box-shadow: 0 15px 30px rgba(0,113,227,0.35); }
+        
+        .proj-status { padding: 6px 16px; border-radius: 30px; font-size: 0.78rem; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; letter-spacing: 0.3px; }
+        .proj-status::before { content: ''; width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; animation: statusPulse 1.6s infinite; }
+        .proj-status.live { background: rgba(48,209,88,0.1); color: #30d158; border: 1px solid rgba(48,209,88,0.25); }
+        .proj-status.live::before { background: #30d158; }
+        .proj-status.soon { background: rgba(255,159,10,0.1); color: #ff9f0a; border: 1px solid rgba(255,159,10,0.25); }
+        .proj-status.soon::before { background: #ff9f0a; }
+        @keyframes statusPulse { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+        
+        .proj-mega-title { font-size: 2rem; font-weight: 900; letter-spacing: -1px; line-height: 1; }
+        .proj-mega-url { font-size: 0.9rem; color: var(--accent-blue); font-weight: 700; margin-top: -6px; opacity: 0.8; }
+        .proj-mega-desc { color: var(--text-muted); font-size: 1.05rem; line-height: 1.65; font-weight: 500; flex-grow: 1; }
+        .proj-mega-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .proj-tag { padding: 6px 16px; background: var(--glass-btn-bg); border: 1px solid var(--border-color); border-radius: 20px; font-size: 0.82rem; font-weight: 700; color: var(--text-muted); }
+        .proj-mega-card:hover .proj-tag { border-color: rgba(0,113,227,0.25); color: var(--accent-blue); }
+        .proj-mega-arrow { font-size: 1.1rem; font-weight: 800; color: var(--accent-blue); display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; transition: gap 0.3s; }
+        .proj-mega-arrow svg { width: 18px; height: 18px; transition: transform 0.3s; }
+        .proj-mega-card:hover .proj-mega-arrow svg { transform: translateX(5px); }
+
+        /* SOCIAL LINKS SECTION */
+        .social-links-section { padding: 80px 5vw 100px; max-width: 900px; margin: 0 auto; position: relative; z-index: 5; text-align: center; }
+        .social-links-title { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; }
+        .social-links-sub { color: var(--text-muted); font-size: 1.05rem; font-weight: 500; margin-bottom: 48px; }
+        .social-links-row { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .social-link-btn {
+            display: inline-flex; align-items: center; gap: 14px;
+            padding: 18px 30px; border-radius: 999px;
+            font-weight: 800; font-size: 1rem; text-decoration: none;
+            color: var(--text-main); background: var(--card-bg);
+            border: 1px solid var(--border-color); transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
+            backdrop-filter: blur(20px); box-shadow: 0 8px 24px var(--card-shadow);
+        }
+        .social-link-btn:hover { transform: translateY(-5px) scale(1.04); border-color: rgba(0,113,227,0.4); box-shadow: 0 20px 45px rgba(0,113,227,0.18); color: var(--accent-blue); }
+        .social-link-btn .soc-btn-icon { width: 42px; height: 42px; border-radius: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: 0.35s; }
+        .social-link-btn .soc-btn-icon svg { width: 22px; height: 22px; }
+        .social-link-btn:hover .soc-btn-icon { transform: rotate(-8deg) scale(1.1); }
+        .soc-btn-tg  .soc-btn-icon { background: rgba(41,151,255,0.12); color: #2997ff; }
+        .soc-btn-pf  .soc-btn-icon { background: rgba(175,82,222,0.12); color: #af52de; }
+        .soc-btn-ig  .soc-btn-icon { background: rgba(230,0,122,0.12); color: #e6007a; }
+
         /* MIJOZLAR FIKRI */
         .testimonials-section { padding: 120px 5vw; max-width: 1400px; margin: 0 auto; z-index: 5; position: relative;}
         .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 35px; }
@@ -294,7 +357,7 @@
         .client-info h4 { font-size: 1.2rem; font-weight: 800; margin-bottom: 4px; color: var(--text-main); }
         .client-info p { font-size: 0.9rem; color: var(--accent-blue); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* LOYIHALARIM */
+        /* LOYIHALARIM (eski - saqlangan) */
         .projects-showcase-section { padding: 100px 5vw; max-width: 1400px; margin: 0 auto; position: relative; z-index: 5; }
         .project-card-new { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 35px; padding: 40px; display: flex; align-items: center; gap: 25px; text-decoration: none; color: var(--text-main); box-shadow: 0 15px 35px var(--card-shadow); transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); max-width: 650px; width: 100%; opacity: 0; transform: translateY(60px) scale(0.95); filter: blur(10px); }
         .project-card-new.visible { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
@@ -692,66 +755,161 @@
                     <p>Texnik bilimlardan tashqari, jamoada jipslashib ishlash va murakkab muammolarga kreativ yechim topish qobiliyatiga egaman. Ochiq muloqot, mas'uliyatni to'la his qilish va yangi bilimlarni egallashga bo'lgan cheksiz ishtiyoq.</p>
                 </div>
             </div>
-            
-            <div style="min-width: 5vw;"></div>
-        </div>
-    </section>
-
-    <section class="socials-section" id="projects">
+       <!-- KATTA LOYIHALAR BO'LIMI -->
+    <section class="big-projects-section" id="projects">
         <div class="section-header-wrapper fade-up">
             <div class="custom-section-title">
                 <span class="dot"></span>
-                <h2>Tarmoqlar & Loyihalar</h2>
+                <h2>Loyihalar</h2>
                 <span class="dot"></span>
             </div>
         </div>
-        <div class="socials-grid">
-            <a href="https://instagram.com/the7dvn" target="_blank" class="soc-card premium-card anim-elem">
-                <div class="soc-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        <div class="projects-mega-grid">
+
+            <!-- 797.uz -->
+            <a href="https://797.uz" target="_blank" class="proj-mega-card anim-elem">
+                <div class="proj-mega-top">
+                    <div class="proj-mega-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    </div>
+                    <span class="proj-status live">Faol</span>
                 </div>
-                <h3 style="z-index: 2;">Shaxsiy Instagram</h3>
-                <p style="z-index: 2;">Mening shaxsiy akkauntim, hayot tarzim va kundalik lahzalarim jamlangan maskan.</p>
+                <div class="proj-mega-title">797.uz</div>
+                <div class="proj-mega-url">797.uz</div>
+                <div class="proj-mega-desc">Mening shaxsiy portfolio portali — dasturlash sayohati, qobiliyatlar, ish tarjixi va barcha loyihalarga kirish nuqtasi.</div>
+                <div class="proj-mega-tags">
+                    <span class="proj-tag">Portfolio</span>
+                    <span class="proj-tag">Frontend</span>
+                    <span class="proj-tag">Interactive</span>
+                </div>
+                <div class="proj-mega-arrow">
+                    Saytga o'tish
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
             </a>
-            
-            <a href="https://instagram.com/797.editss" target="_blank" class="soc-card premium-card anim-elem">
-                <div class="soc-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+
+            <!-- business.797.uz -->
+            <a href="https://business.797.uz" target="_blank" class="proj-mega-card anim-elem">
+                <div class="proj-mega-top">
+                    <div class="proj-mega-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                    </div>
+                    <span class="proj-status live">Faol</span>
                 </div>
-                <h3 style="z-index: 2;">797.Editss</h3>
-                <p style="z-index: 2;">Maxsus video editlar, vizual effektlar va ijodiy ishlarim uchun alohida sahifa.</p>
+                <div class="proj-mega-title">Business 797</div>
+                <div class="proj-mega-url">business.797.uz</div>
+                <div class="proj-mega-desc">Jamoa portfoliosi va biznes agentlik sahifasi — xizmatlar, narxlar, jamoa a'zolari va hamkorlik imkoniyatlari.</div>
+                <div class="proj-mega-tags">
+                    <span class="proj-tag">Agency</span>
+                    <span class="proj-tag">Portfolio</span>
+                    <span class="proj-tag">Team</span>
+                </div>
+                <div class="proj-mega-arrow">
+                    Saytga o'tish
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
             </a>
-            
-            <a href="https://t.me/+bhq3yRTn9Pk2NzUy" target="_blank" class="soc-card premium-card anim-elem">
-                <div class="soc-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+
+            <!-- library.797.uz -->
+            <div class="proj-mega-card anim-elem" style="cursor: default;">
+                <div class="proj-mega-top">
+                    <div class="proj-mega-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                    </div>
+                    <span class="proj-status soon">Tez kunda</span>
                 </div>
-                <h3 style="z-index: 2;">Shaxsiy Kanal</h3>
-                <p style="z-index: 2;">Dasturlash sirlari, foydali maqolalar va shaxsiy fikrlarim almashinuv markazi.</p>
+                <div class="proj-mega-title">Library 797</div>
+                <div class="proj-mega-url">library.797.uz</div>
+                <div class="proj-mega-desc">Raqamli kutubxona platformasi — o'zbek va jahon adabiyotidan kitoblar, maqolalar va ta'limiy materiallar to'plami.</div>
+                <div class="proj-mega-tags">
+                    <span class="proj-tag">Kutubxona</span>
+                    <span class="proj-tag">Ta'lim</span>
+                    <span class="proj-tag">Kitoblar</span>
+                </div>
+                <div class="proj-mega-arrow" style="color: var(--text-muted); cursor: not-allowed;">
+                    Tez orada...
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                </div>
+            </div>
+
+            <!-- eduword.uz -->
+            <a href="https://eduword.uz" target="_blank" class="proj-mega-card anim-elem">
+                <div class="proj-mega-top">
+                    <div class="proj-mega-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    </div>
+                    <span class="proj-status live">Faol</span>
+                </div>
+                <div class="proj-mega-title">EduWord</div>
+                <div class="proj-mega-url">eduword.uz</div>
+                <div class="proj-mega-desc">Interaktiv so'z o'rganish va ta'lim platformasi — lug'at, testlar, mashqlar va o'quv jarayonini gamification orqali oshirish.</div>
+                <div class="proj-mega-tags">
+                    <span class="proj-tag">Ta'lim</span>
+                    <span class="proj-tag">So'z o'rganish</span>
+                    <span class="proj-tag">Gamification</span>
+                </div>
+                <div class="proj-mega-arrow">
+                    Saytga o'tish
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
             </a>
-            
-            <a href="https://t.me/the7dvn" target="_blank" class="soc-card premium-card anim-elem">
-                <div class="soc-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+
+            <!-- pulse-crm.online -->
+            <a href="https://pulse-crm.online" target="_blank" class="proj-mega-card anim-elem">
+                <div class="proj-mega-top">
+                    <div class="proj-mega-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    </div>
+                    <span class="proj-status live">Faol</span>
                 </div>
-                <h3 style="z-index: 2;">Editlar Kanali</h3>
-                <p style="z-index: 2;">Telegram tarmog'idagi barcha video editlarim va arxiv ishlarim jamlanmasi.</p>
+                <div class="proj-mega-title">PulseCRM</div>
+                <div class="proj-mega-url">pulse-crm.online</div>
+                <div class="proj-mega-desc">O'quv markazlari uchun zamonaviy CRM ekotizimi — talabalar, to'lovlar, guruhlar, hisobotlar va avtomatlashtirish bitta tizimda.</div>
+                <div class="proj-mega-tags">
+                    <span class="proj-tag">CRM</span>
+                    <span class="proj-tag">SaaS</span>
+                    <span class="proj-tag">Automation</span>
+                </div>
+                <div class="proj-mega-arrow">
+                    Saytga o'tish
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
             </a>
-            
-            <a href="javascript:void(0)" onclick="document.getElementById('serviceModal').classList.add('show'); backToMain();" class="soc-card premium-card anim-elem">
-                <div class="soc-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+
+        </div>
+    </section>
+
+    <!-- IJTIMOIY TARMOQLAR -->
+    <section class="social-links-section fade-up">
+        <div class="social-links-title">Bog'lanish & Kuzatish</div>
+        <div class="social-links-sub">Telegram, portfolio va Instagram sahifalarim orqali biz bilan aloqada bo'ling.</div>
+        <div class="social-links-row">
+            <a href="https://t.me/the_797" target="_blank" class="social-link-btn soc-btn-tg">
+                <div class="soc-btn-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                 </div>
-                <h3 style="z-index: 2;">Premium Servis</h3>
-                <p style="z-index: 2;">Telegram Premium, Stars va boshqa raqamli xizmatlarni ishonchli xarid qilish portali.</p>
+                <div>
+                    <div style="font-size:0.78rem;opacity:0.6;font-weight:700;margin-bottom:1px;">TELEGRAM KANAL</div>
+                    <div>@the_797</div>
+                </div>
             </a>
-            
-            <a href="https://t.me/whois_797" target="_blank" class="soc-card premium-card anim-elem">
-                <div class="soc-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            <a href="https://t.me/dvnprofile" target="_blank" class="social-link-btn soc-btn-pf">
+                <div class="soc-btn-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
                 </div>
-                <h3 style="z-index: 2;">Barcha Loyihalarim</h3>
-                <p style="z-index: 2;">Yaratilgan va ustida ish olib borilayotgan barcha proyektlarimning to'liq portfoliosi.</p>
+                <div>
+                    <div style="font-size:0.78rem;opacity:0.6;font-weight:700;margin-bottom:1px;">PORTFOLIO TG</div>
+                    <div>@dvnprofile</div>
+                </div>
+            </a>
+            <a href="https://instagram.com/dvnuz" target="_blank" class="social-link-btn soc-btn-ig">
+                <div class="soc-btn-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </div>
+                <div>
+                    <div style="font-size:0.78rem;opacity:0.6;font-weight:700;margin-bottom:1px;">INSTAGRAM</div>
+                    <div>@dvnuz</div>
+                </div>
             </a>
         </div>
     </section>
@@ -829,29 +987,7 @@
         </div>
     </section>
 
-    <section class="projects-showcase-section">
-        <div class="section-header-wrapper fade-up">
-            <div class="custom-section-title">
-                <span class="dot"></span>
-                <h2>Mening Loyiham</h2>
-                <span class="dot"></span>
-            </div>
-        </div>
-        <div style="display: flex; justify-content: center; margin-top: 40px;">
-            <a href="https://eduword-app.web.app" target="_blank" class="project-card-new">
-                <div class="project-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                    </svg>
-                </div>
-                <div class="project-info">
-                    <h3>Eduword</h3>
-                    <p>Zamonaviy interfeysga ega interaktiv ta'lim va so'z o'rganish platformasi. Loyihaga o'tish uchun bosing.</p>
-                </div>
-            </a>
-        </div>
-    </section>
+    <!-- Eski section o'chirildi — loyihalar yuqoridagi katta grid'da -->
 
     <section class="marquee-section" style="padding: 40px 0;">
         <div class="marquee-container scroll-left">
