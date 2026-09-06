@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://797.uz/sitemap.xml

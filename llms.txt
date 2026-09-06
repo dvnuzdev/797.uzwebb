@@ -1,0 +1,11 @@
+# dvnuzdev
+
+> Software Engineer & Product Creator
+
+## Projects
+- PulseCRM (https://pulse-crm.online): CRM and management system for educational centers.
+- EduWord (https://eduword.uz): Interactive vocabulary and language learning platform.
+
+## Contact
+- Telegram: https://t.me/dvnuz
+- Instagram: https://instagram.com/dvnuz

@@ -1,455 +1,111 @@
 <!DOCTYPE html>
 <html lang="uz" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>797.uz — Jaloliddin Alisherov</title>
-    <meta name="description" content="Jaloliddin Alisherov — dasturchi va raqamli mahsulotlar yaratuvchisi. Loyihalar: 797.uz, business.797.uz, library.797.uz, eduword.uz, pulse-crm.online">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        /* ── TOKENS ───────────────────────────────────────────── */
-        :root {
-            --bg:       #eef1f5;
-            --bg2:      #ffffff;
-            --text:     #111111;
-            --muted:    #737373;
-            --blue:     #0071e3;
-            --grad:     linear-gradient(135deg,#0071e3,#2997ff);
-            --border:   rgba(0,0,0,0.07);
-            --card:     rgba(255,255,255,0.9);
-            --nav-bg:   rgba(255,255,255,0.72);
-            --shadow:   rgba(0,0,0,0.05);
-        }
-        [data-theme="dark"] {
-            --bg:       #09090b;
-            --bg2:      #121217;
-            --text:     #f4f4f7;
-            --muted:    #8e8e99;
-            --blue:     #2997ff;
-            --grad:     linear-gradient(135deg,#2997ff,#af52de);
-            --border:   rgba(255,255,255,0.08);
-            --card:     rgba(18,18,23,0.82);
-            --nav-bg:   rgba(18,18,23,0.80);
-            --shadow:   rgba(0,0,0,0.45);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dvnuzdev</title>
 
-        /* ── RESET ────────────────────────────────────────────── */
-        *{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;}
-        html{scroll-behavior:smooth;}
-        body{background:var(--bg);color:var(--text);overflow-x:hidden;transition:background 0.4s,color 0.4s;}
-        a{text-decoration:none;color:inherit;}
+  <!-- SEO & Discovery -->
+  <meta name="description" content="dvnuzdev — software engineer and product creator. Projects include PulseCRM and EduWord.">
+  <meta name="author" content="dvnuzdev">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://797.uz/">
 
-        /* ── GRID BACKGROUND ─────────────────────────────────── */
-        .grid-bg{position:fixed;inset:0;z-index:-2;pointer-events:none;
-            background-image:linear-gradient(var(--border) 1px,transparent 1px),
-                             linear-gradient(90deg,var(--border) 1px,transparent 1px);
-            background-size:55px 55px;}
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://797.uz/">
+  <meta property="og:title" content="dvnuzdev">
+  <meta property="og:description" content="Software engineer and product creator.">
 
-        /* ── AMBIENT BLOBS ───────────────────────────────────── */
-        .blob{position:fixed;border-radius:50%;filter:blur(140px);pointer-events:none;z-index:-1;}
-        .b1{width:55vw;height:55vw;background:var(--blue);top:-15%;left:-10%;opacity:0.1;animation:bf 22s infinite alternate ease-in-out;}
-        .b2{width:45vw;height:45vw;background:#af52de;bottom:-10%;right:-10%;opacity:0.08;animation:bf 22s infinite alternate-reverse ease-in-out;}
-        @keyframes bf{0%{transform:translate(0,0) scale(1);}100%{transform:translate(8%,8%) scale(1.1);}}
+  <!-- Minimalist Favicon (Geometric Monochrome Mark) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2318181b'/><path d='M10 20L16 12L22 20' stroke='%23f4f4f5' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
 
-        /* ── NAV ─────────────────────────────────────────────── */
-        nav{
-            position:fixed;top:16px;left:50%;transform:translateX(-50%);
-            width:92%;max-width:1100px;z-index:9000;
-            background:var(--nav-bg);backdrop-filter:blur(28px) saturate(180%);
-            -webkit-backdrop-filter:blur(28px) saturate(180%);
-            border:1px solid var(--border);border-radius:999px;
-            box-shadow:0 8px 30px rgba(0,0,0,0.2);
-        }
-        .nav-inner{
-            display:flex;align-items:center;justify-content:space-between;
-            height:66px;padding:0 26px;
-        }
-        .nav-logo{font-size:1.3rem;font-weight:900;letter-spacing:-1px;display:flex;align-items:center;gap:8px;}
-        .nav-logo span{font-size:0.85rem;font-weight:600;color:var(--muted);letter-spacing:0;}
-        .theme-btn{
-            width:40px;height:40px;border-radius:50%;
-            background:rgba(255,255,255,0.06);border:1px solid var(--border);
-            color:var(--text);cursor:pointer;font-size:1.1rem;
-            display:flex;align-items:center;justify-content:center;
-            transition:transform 0.25s,background 0.25s;
-        }
-        .theme-btn:hover{transform:rotate(15deg) scale(1.08);background:rgba(255,255,255,0.12);}
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "dvnuzdev",
+    "url": "https://797.uz/",
+    "jobTitle": "Software Engineer",
+    "sameAs": [
+      "https://t.me/dvnuz",
+      "https://instagram.com/dvnuz"
+    ]
+  }
+  </script>
 
-        /* ── HERO ─────────────────────────────────────────────── */
-        .hero{
-            min-height:100dvh;display:flex;flex-direction:column;
-            align-items:center;justify-content:center;
-            text-align:center;padding:120px 24px 60px;
-            position:relative;
-        }
-        .hero-tag{
-            display:inline-flex;align-items:center;gap:8px;
-            background:rgba(41,151,255,0.08);border:1px solid rgba(41,151,255,0.2);
-            color:var(--blue);padding:8px 20px;border-radius:999px;
-            font-size:0.8rem;font-weight:800;letter-spacing:0.8px;
-            text-transform:uppercase;margin-bottom:28px;
-        }
-        .hero-tag-dot{width:7px;height:7px;border-radius:50%;background:var(--blue);animation:dp 1.4s infinite;}
-        @keyframes dp{0%,100%{opacity:1;}50%{opacity:0.25;}}
-
-        .hero h1{
-            font-size:clamp(3rem,8vw,7rem);font-weight:900;
-            letter-spacing:-0.04em;line-height:1.05;margin-bottom:20px;
-        }
-        .hero h1 .g{
-            background:var(--grad);-webkit-background-clip:text;
-            -webkit-text-fill-color:transparent;background-clip:text;
-        }
-        .hero-sub{
-            color:var(--muted);font-size:clamp(1rem,2.5vw,1.2rem);
-            line-height:1.7;font-weight:500;max-width:540px;
-            margin:0 auto 48px;
-        }
-        .hero-scroll{
-            display:inline-flex;align-items:center;gap:10px;
-            color:var(--muted);font-size:0.88rem;font-weight:700;
-            animation:scrollBounce 2s infinite ease-in-out;
-        }
-        .hero-scroll svg{width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
-        @keyframes scrollBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
-
-        /* ── SECTION WRAPPER ──────────────────────────────────── */
-        .sec{padding:100px 24px;max-width:1200px;margin:0 auto;}
-        .sec-title{
-            display:flex;justify-content:center;margin-bottom:64px;
-        }
-        .sec-title-inner{
-            display:inline-flex;align-items:center;gap:14px;
-            background:var(--card);backdrop-filter:blur(20px);
-            border:1px solid var(--blue);border-radius:999px;
-            padding:12px 36px;
-            box-shadow:0 8px 30px rgba(41,151,255,0.12);
-        }
-        .sec-dot{width:10px;height:10px;border-radius:50%;background:var(--grad);box-shadow:0 0 8px var(--blue);animation:sdp 2s infinite;}
-        @keyframes sdp{0%{transform:scale(0.9);opacity:0.7;}50%{transform:scale(1.2);opacity:1;box-shadow:0 0 14px var(--blue);}100%{transform:scale(0.9);opacity:0.7;}}
-        .sec-title-inner h2{font-size:clamp(1.3rem,3vw,2rem);font-weight:900;margin:0;letter-spacing:-0.5px;text-transform:uppercase;}
-
-        /* ── PROJECTS GRID ────────────────────────────────────── */
-        .proj-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
-            gap:28px;
-        }
-        @media(max-width:820px){.proj-grid{grid-template-columns:1fr;}}
-
-        .proj-card{
-            background:var(--card);border:1px solid var(--border);border-radius:28px;
-            padding:38px 36px;display:flex;flex-direction:column;gap:20px;
-            position:relative;overflow:hidden;
-            transition:all 0.45s cubic-bezier(0.23,1,0.32,1);
-            opacity:0;transform:translateY(40px) scale(0.97);
-            backdrop-filter:blur(20px);
-        }
-        .proj-card.vis{opacity:1;transform:translateY(0) scale(1);}
-        .proj-card::before{
-            content:'';position:absolute;inset:0;background:var(--grad);
-            opacity:0;transition:opacity 0.45s;z-index:0;
-        }
-        .proj-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 30px 70px var(--shadow);border-color:rgba(41,151,255,0.45);}
-        .proj-card:hover::before{opacity:0.04;}
-        .proj-card>*{position:relative;z-index:1;}
-
-        .proj-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
-        .proj-icon{
-            width:68px;height:68px;border-radius:20px;
-            background:rgba(41,151,255,0.08);
-            border:1px solid rgba(41,151,255,0.15);
-            display:flex;align-items:center;justify-content:center;
-            color:var(--blue);flex-shrink:0;
-            transition:all 0.45s cubic-bezier(0.23,1,0.32,1);
-        }
-        .proj-icon svg{width:32px;height:32px;stroke-width:1.8;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;}
-        .proj-card:hover .proj-icon{background:var(--grad);color:#fff;border-color:transparent;transform:rotate(-8deg) scale(1.12);box-shadow:0 12px 30px rgba(41,151,255,0.35);}
-
-        .proj-badge{
-            padding:5px 14px;border-radius:999px;font-size:0.75rem;font-weight:800;
-            display:inline-flex;align-items:center;gap:6px;letter-spacing:0.2px;
-            flex-shrink:0;
-        }
-        .proj-badge::before{content:'';width:6px;height:6px;border-radius:50%;animation:bp 1.5s infinite;}
-        .live{background:rgba(48,209,88,0.1);color:#30d158;border:1px solid rgba(48,209,88,0.25);}
-        .live::before{background:#30d158;}
-        .soon{background:rgba(255,159,10,0.1);color:#ff9f0a;border:1px solid rgba(255,159,10,0.25);}
-        .soon::before{background:#ff9f0a;}
-        @keyframes bp{0%,100%{opacity:1;}50%{opacity:0.3;}}
-
-        .proj-name{font-size:1.9rem;font-weight:900;letter-spacing:-0.04em;line-height:1;}
-        .proj-url{font-size:0.88rem;color:var(--blue);font-weight:700;opacity:0.75;margin-top:-6px;}
-        .proj-desc{color:var(--muted);font-size:1rem;line-height:1.65;font-weight:500;flex-grow:1;}
-        .proj-tags{display:flex;flex-wrap:wrap;gap:7px;}
-        .proj-tag{
-            padding:5px 14px;background:rgba(255,255,255,0.05);
-            border:1px solid var(--border);border-radius:999px;
-            font-size:0.78rem;font-weight:700;color:var(--muted);
-            transition:all 0.3s;
-        }
-        .proj-card:hover .proj-tag{border-color:rgba(41,151,255,0.25);color:var(--blue);}
-        .proj-arrow{
-            display:inline-flex;align-items:center;gap:7px;
-            color:var(--blue);font-weight:800;font-size:1rem;margin-top:4px;
-        }
-        .proj-arrow svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform 0.3s;}
-        .proj-card:hover .proj-arrow svg{transform:translateX(5px);}
-        .disabled-link{color:var(--muted);cursor:default;}
-
-        /* ── SOCIAL LINKS ─────────────────────────────────────── */
-        .social-sec{padding:80px 24px 120px;text-align:center;}
-        .social-heading{font-size:clamp(1.8rem,4vw,3rem);font-weight:900;letter-spacing:-0.04em;margin-bottom:12px;}
-        .social-sub{color:var(--muted);font-size:1.05rem;font-weight:500;margin-bottom:48px;}
-        .social-row{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;}
-        .soc-btn{
-            display:inline-flex;align-items:center;gap:14px;
-            padding:16px 28px;border-radius:999px;
-            font-weight:800;font-size:0.95rem;
-            color:var(--text);background:var(--card);
-            border:1px solid var(--border);
-            backdrop-filter:blur(20px);
-            box-shadow:0 6px 20px var(--shadow);
-            transition:all 0.35s cubic-bezier(0.23,1,0.32,1);
-        }
-        .soc-btn:hover{transform:translateY(-5px) scale(1.04);border-color:rgba(41,151,255,0.4);box-shadow:0 18px 45px rgba(41,151,255,0.15);color:var(--blue);}
-        .soc-icon-wrap{width:40px;height:40px;border-radius:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.35s;}
-        .soc-icon-wrap svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-        .soc-btn:hover .soc-icon-wrap{transform:rotate(-8deg) scale(1.1);}
-        .tg-c .soc-icon-wrap{background:rgba(41,151,255,0.1);color:#2997ff;}
-        .tg-p .soc-icon-wrap{background:rgba(175,82,222,0.1);color:#af52de;}
-        .ig   .soc-icon-wrap{background:rgba(230,0,122,0.1);color:#e6007a;}
-        .soc-label{font-size:0.72rem;opacity:0.55;font-weight:700;margin-bottom:2px;letter-spacing:0.5px;text-transform:uppercase;}
-
-        /* ── FOOTER ───────────────────────────────────────────── */
-        footer{
-            border-top:1px solid var(--border);
-            padding:28px 24px;text-align:center;
-            color:var(--muted);font-size:0.85rem;font-weight:500;
-        }
-
-        /* ── RESPONSIVE ───────────────────────────────────────── */
-        @media(max-width:600px){
-            .proj-card{padding:28px 24px;}
-            .proj-name{font-size:1.5rem;}
-            .soc-btn{padding:14px 20px;gap:10px;}
-        }
-        @media(max-width:420px){
-            .social-row{flex-direction:column;align-items:center;}
-            .soc-btn{width:100%;max-width:320px;justify-content:flex-start;}
-        }
-
-        /* ── SCROLLBAR ────────────────────────────────────────── */
-        ::-webkit-scrollbar{width:6px;}
-        ::-webkit-scrollbar-track{background:var(--bg);}
-        ::-webkit-scrollbar-thumb{background:rgba(128,128,128,0.3);border-radius:999px;}
-    </style>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<!-- Background -->
-<div class="grid-bg"></div>
-<div class="blob b1"></div>
-<div class="blob b2"></div>
+  <div class="wrapper">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">dvnuzdev</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span id="themeText">Light</span>
+      </button>
+    </header>
 
-<!-- NAV -->
-<nav>
-    <div class="nav-inner">
-        <div class="nav-logo">797 <span>| Jaloliddin Alisherov</span></div>
-        <button class="theme-btn" id="themeBtn" aria-label="Theme toggle">🌙</button>
-    </div>
-</nav>
+    <main>
+      <!-- Intro -->
+      <section class="intro">
+        <h1 class="title">Software engineer &amp; product builder.</h1>
+        <p class="subtitle">Raqamli mahsulotlar, CRM tizimlar va web platformalar ishlab chiqish.</p>
+      </section>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-tag"><div class="hero-tag-dot"></div>Dasturchi & Ijodkor</div>
-    <h1>Kod bilan <span class="g">dunyo</span><br>quramiz</h1>
-    <p class="hero-sub">Har bir loyiha — oddiy kodni emas, haqiqiy tajriba va ehtiyojni hal etuvchi yechim yaratish.</p>
-    <div class="hero-scroll">
-        Loyihalarni ko'rish
-        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-    </div>
-</section>
+      <!-- Projects -->
+      <section class="projects">
+        <div class="section-label">Loyihalar</div>
+        <div class="project-list">
 
-<!-- PROJECTS -->
-<div class="sec" id="projects">
-    <div class="sec-title">
-        <div class="sec-title-inner">
-            <span class="sec-dot"></span>
-            <h2>Loyihalar</h2>
-            <span class="sec-dot"></span>
+          <!-- PulseCRM -->
+          <a href="https://pulse-crm.online" target="_blank" rel="noopener noreferrer" class="project-item">
+            <div class="project-head">
+              <div class="project-name">PulseCRM</div>
+              <div class="project-arrow">↗</div>
+            </div>
+            <p class="project-desc">O'quv markazlari va ta'lim biznesi uchun to'liq boshqaruv ekotizimi.</p>
+            <span class="project-url">pulse-crm.online</span>
+          </a>
+
+          <!-- EduWord -->
+          <a href="https://eduword.uz" target="_blank" rel="noopener noreferrer" class="project-item">
+            <div class="project-head">
+              <div class="project-name">EduWord</div>
+              <div class="project-arrow">↗</div>
+            </div>
+            <p class="project-desc">Interaktiv so'z o'rganish va chet tili ta'limi platformasi.</p>
+            <span class="project-url">eduword.uz</span>
+          </a>
+
         </div>
-    </div>
+      </section>
 
-    <div class="proj-grid">
-
-        <!-- 797.uz -->
-        <a href="https://797.uz" target="_blank" class="proj-card">
-            <div class="proj-top">
-                <div class="proj-icon">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                </div>
-                <span class="proj-badge live">Faol</span>
-            </div>
-            <div class="proj-name">797.uz</div>
-            <div class="proj-url">797.uz</div>
-            <div class="proj-desc">Shaxsiy portfolio portali — dasturlash sayohati, qobiliyatlar, tajriba va barcha loyihalarga asosiy kirish nuqtasi.</div>
-            <div class="proj-tags">
-                <span class="proj-tag">Portfolio</span>
-                <span class="proj-tag">Frontend</span>
-                <span class="proj-tag">Interactive</span>
-            </div>
-            <div class="proj-arrow">Saytga o'tish <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
-        </a>
-
-        <!-- business.797.uz -->
-        <a href="https://business.797.uz" target="_blank" class="proj-card">
-            <div class="proj-top">
-                <div class="proj-icon">
-                    <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                </div>
-                <span class="proj-badge live">Faol</span>
-            </div>
-            <div class="proj-name">Business 797</div>
-            <div class="proj-url">business.797.uz</div>
-            <div class="proj-desc">Jamoa portfoliosi va biznes agentlik sahifasi — xizmatlar, narxlar, jamoa a'zolari va hamkorlik imkoniyatlari.</div>
-            <div class="proj-tags">
-                <span class="proj-tag">Agency</span>
-                <span class="proj-tag">Portfolio</span>
-                <span class="proj-tag">Team</span>
-            </div>
-            <div class="proj-arrow">Saytga o'tish <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
-        </a>
-
-        <!-- library.797.uz -->
-        <div class="proj-card" style="cursor:default;">
-            <div class="proj-top">
-                <div class="proj-icon">
-                    <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                </div>
-                <span class="proj-badge soon">Tez kunda</span>
-            </div>
-            <div class="proj-name">Library 797</div>
-            <div class="proj-url">library.797.uz</div>
-            <div class="proj-desc">Raqamli kutubxona platformasi — o'zbek va jahon adabiyotidan kitoblar, maqolalar va ta'limiy materiallar to'plami.</div>
-            <div class="proj-tags">
-                <span class="proj-tag">Kutubxona</span>
-                <span class="proj-tag">Ta'lim</span>
-                <span class="proj-tag">Kitoblar</span>
-            </div>
-            <div class="proj-arrow disabled-link">Tez orada... <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg></div>
+      <!-- Contact -->
+      <section class="contact">
+        <div class="section-label">Aloqa</div>
+        <div class="contact-links">
+          <a href="https://t.me/dvnuz" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <span>Telegram @dvnuz</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a href="https://instagram.com/dvnuz" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <span>Instagram @dvnuz</span>
+            <span class="arrow">↗</span>
+          </a>
         </div>
+      </section>
+    </main>
 
-        <!-- eduword.uz -->
-        <a href="https://eduword.uz" target="_blank" class="proj-card">
-            <div class="proj-top">
-                <div class="proj-icon">
-                    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                </div>
-                <span class="proj-badge live">Faol</span>
-            </div>
-            <div class="proj-name">EduWord</div>
-            <div class="proj-url">eduword.uz</div>
-            <div class="proj-desc">Interaktiv so'z o'rganish va ta'lim platformasi — lug'at, testlar, mashqlar va gamification orqali til o'rganish.</div>
-            <div class="proj-tags">
-                <span class="proj-tag">Ta'lim</span>
-                <span class="proj-tag">So'z o'rganish</span>
-                <span class="proj-tag">Gamification</span>
-            </div>
-            <div class="proj-arrow">Saytga o'tish <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
-        </a>
+    <!-- Footer -->
+    <footer class="footer">
+      <div>dvnuzdev</div>
+      <div>2026</div>
+    </footer>
+  </div>
 
-        <!-- pulse-crm.online -->
-        <a href="https://pulse-crm.online" target="_blank" class="proj-card">
-            <div class="proj-top">
-                <div class="proj-icon">
-                    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-                </div>
-                <span class="proj-badge live">Faol</span>
-            </div>
-            <div class="proj-name">PulseCRM</div>
-            <div class="proj-url">pulse-crm.online</div>
-            <div class="proj-desc">O'quv markazlari uchun zamonaviy CRM ekotizimi — talabalar, to'lovlar, guruhlar, hisobotlar va avtomatlashtirishni bir joyda boshqaring.</div>
-            <div class="proj-tags">
-                <span class="proj-tag">CRM</span>
-                <span class="proj-tag">SaaS</span>
-                <span class="proj-tag">Automation</span>
-            </div>
-            <div class="proj-arrow">Saytga o'tish <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
-        </a>
-
-    </div>
-</div>
-
-<!-- SOCIAL LINKS -->
-<div class="social-sec" id="contact">
-    <h2 class="social-heading">Bog'lanish & Kuzatish</h2>
-    <p class="social-sub">Telegram, portfolio va Instagram orqali aloqada bo'ling.</p>
-    <div class="social-row">
-        <a href="https://t.me/the_797" target="_blank" class="soc-btn tg-c">
-            <div class="soc-icon-wrap">
-                <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            </div>
-            <div>
-                <div class="soc-label">Telegram Kanal</div>
-                <div>@the_797</div>
-            </div>
-        </a>
-        <a href="https://t.me/dvnprofile" target="_blank" class="soc-btn tg-p">
-            <div class="soc-icon-wrap">
-                <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-            </div>
-            <div>
-                <div class="soc-label">Portfolio TG</div>
-                <div>@dvnprofile</div>
-            </div>
-        </a>
-        <a href="https://instagram.com/dvnuz" target="_blank" class="soc-btn ig">
-            <div class="soc-icon-wrap">
-                <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            </div>
-            <div>
-                <div class="soc-label">Instagram</div>
-                <div>@dvnuz</div>
-            </div>
-        </a>
-    </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-    © 2026 797.uz — Jaloliddin Alisherov. Barcha huquqlar himoyalangan.
-</footer>
-
-<script>
-// ── THEME ───────────────────────────────────────────────────────
-const html = document.documentElement;
-const btn  = document.getElementById('themeBtn');
-const saved = localStorage.getItem('theme797') || 'dark';
-html.setAttribute('data-theme', saved);
-btn.textContent = saved === 'dark' ? '🌙' : '☀️';
-
-btn.addEventListener('click', () => {
-    const cur = html.getAttribute('data-theme');
-    const next = cur === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('theme797', next);
-    btn.textContent = next === 'dark' ? '🌙' : '☀️';
-});
-
-// ── SCROLL REVEAL ───────────────────────────────────────────────
-const cards = document.querySelectorAll('.proj-card');
-const observe = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-            setTimeout(() => e.target.classList.add('vis'), i * 90);
-            observe.unobserve(e.target);
-        }
-    });
-}, { threshold: 0.1 });
-cards.forEach(c => observe.observe(c));
-</script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

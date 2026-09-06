@@ -1,0 +1,256 @@
+/* ==========================================================================
+   dvnuzdev — Minimalist Personal Portfolio
+   Zero vibecoded cliches. Pure typography, balance & clarity.
+   ========================================================================== */
+
+:root {
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Light mode (Subtle neutral) */
+  --bg: #fafafa;
+  --bg-card: #ffffff;
+  --text-main: #18181b;
+  --text-muted: #71717a;
+  --text-dim: #a1a1aa;
+  --border: #e4e4e7;
+  --border-hover: #a1a1aa;
+  --radius: 8px;
+}
+
+[data-theme="dark"] {
+  /* Dark mode (Clean monochromatic zinc) */
+  --bg: #09090b;
+  --bg-card: #121215;
+  --text-main: #fafafa;
+  --text-muted: #a1a1aa;
+  --text-dim: #52525b;
+  --border: #27272a;
+  --border-hover: #52525b;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--bg);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── LAYOUT ───────────────────────────────────────────────────────────── */
+.wrapper {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 80px 24px 120px;
+}
+
+/* ── HEADER ───────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 72px;
+}
+
+.brand {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--border-hover);
+  color: var(--text-main);
+}
+
+/* ── INTRO / HERO ─────────────────────────────────────────────────────── */
+.intro {
+  margin-bottom: 64px;
+}
+
+.title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  margin-bottom: 14px;
+  color: var(--text-main);
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* ── SECTION LABELS ───────────────────────────────────────────────────── */
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+}
+
+/* ── PROJECTS LIST ────────────────────────────────────────────────────── */
+.projects {
+  margin-bottom: 64px;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-item {
+  display: block;
+  padding: 22px 24px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.project-item:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
+}
+
+.project-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.project-name {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-main);
+}
+
+.project-arrow {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  transition: color 0.15s ease;
+}
+
+.project-item:hover .project-arrow {
+  color: var(--text-main);
+}
+
+.project-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.project-url {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-top: 10px;
+}
+
+/* ── CONNECT / CONTACT ────────────────────────────────────────────────── */
+.contact {
+  margin-bottom: 72px;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-main);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.contact-link:hover {
+  border-color: var(--border-hover);
+}
+
+.contact-link span.arrow {
+  color: var(--text-dim);
+}
+
+/* ── FOOTER ───────────────────────────────────────────────────────────── */
+.footer {
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────────── */
+@media (max-width: 540px) {
+  .wrapper {
+    padding: 48px 20px 80px;
+  }
+  .header {
+    margin-bottom: 48px;
+  }
+  .title {
+    font-size: 1.6rem;
+  }
+  .project-item {
+    padding: 18px 20px;
+  }
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
